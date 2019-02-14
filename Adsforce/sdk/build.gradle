@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1104
+        versionName "1.1.4"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    provided 'com.google.android.gms:play-services-base:16.0.1'
+    provided 'com.android.installreferrer:installreferrer:1.0'
+}
+
+task R(dependsOn: 'assemble') << {
+    File rootDir = project.projectDir.parentFile
+    println "$project.name: rootDir:" + rootDir.getAbsolutePath()
+
+    File outputDir = new File(rootDir, "libs")
+    if (outputDir.exists()) {
+        outputDir.deleteDir()
+    }
+    if (!outputDir.exists()) {
+        outputDir.mkdirs()
+    }
+
+    File outputFile = new File(project.projectDir, 'build/outputs/aar/sdk-release.aar')
+    if (outputFile.exists()) {
+        copy {
+            from outputFile
+            into outputDir
+
+            rename 'sdk-release.aar', "AdsforceSdk_" + android.defaultConfig.versionCode + ".aar"
+        }
+    }
+
+    File libFile = new File(project.projectDir, 'libs/installreferrer_1.0.jar')
+    if (libFile.exists()) {
+        copy {
+            from libFile
+            into outputDir
+        }
+    }
+}
+
+
+
