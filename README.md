@@ -2,7 +2,7 @@
 
 This open-source library allows you to integrate Adsforce tracking functions into your Android app.
 
-Learn more about the provided samples, documentation, integrating the SDK into your app, and more at [https://xhance.io/docs](https://xhance.io/docs)
+Learn more about the provided samples, documentation, integrating the SDK into your app, and more at [https://docs.adsforce.io](https://docs.adsforce.io)
 
 ## Features
 
@@ -12,7 +12,7 @@ Learn more about the provided samples, documentation, integrating the SDK into y
 
 ## Integration
 
-See the [INSTALL.md](https://github.com/adsforce/sdk-android/blob/master/INSTALL.md) file. 
+See the [Android integration doc](https://github.com/adsforce/sdk-download/tree/master/android). 
 
 ## Issues & Feedback
 
